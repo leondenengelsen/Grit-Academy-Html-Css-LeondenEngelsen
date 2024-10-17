@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Synth</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .control-group { margin-bottom: 20px; }
+        label { display: inline-block; width: 180px; }
+        input[type="range"] { width: 300px; }
+        button { padding: 10px 20px; margin-right: 10px; }
+        .key { display: inline-block; width: 30px; height: 100px; margin: 2px; border: 1px solid #000; text-align: center; line-height: 100px; cursor: pointer; user-select: none; }
+        .white { background-color: #fff; }
+        .black { background-color: #000; color: #fff; height: 60px; margin-top: 0; position: relative; top: -60px; z-index: 1; }
+        .pressed { background-color: #ff0 !important; }
+        body {
+                 background-color: rgba(11, 85, 105, 0.234);
+                    }
+        .control{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+                    
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+    
+</head>
+<body style="margin-left: 100px; margin-right: 100px;">
+    
+    <header>
+
+        <div class="logo">
+          <h1 id="logo">Leon den engelsen</h1>
+        </div>
+    
+        <div class="nav-bar">
+            <div class="web-menu">
+                <nav>
+                <a class="menu-item" href="./pages/projects.html">Projects</a>
+                <a class="menu-item" href="./pages/gearlist.html">Gear</a>
+                <a class="menu-item" href="contact-form.html">Contact</a>
+                <a class="menu-item" href="../index.html">Home</a>
+                
+                </nav>
+            </div>
+    
+            
+            <div class="phone-menu">
+                <button class="menu-button">menu</button>
+                <nav>
+                <a class="phone-menu-item" href="">Home</a>
+                <a class="phone-menu-item" href="">Projects</a>
+                <a class="phone-menu-item" href="">Contact</a>
+                <a class="phone-menu-item" href="">Gear for sale</a>
+                </nav>
+            </div>
+    
+            <!--<div class="flex">   
+    
+        <nav> 
+          <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <a id="link1" href="./pages/synth.html">Synth</a>
+              <a id="link2" href="./pages/gearlist.html">Gear</a>
+              <a id="link3" href="./pages/projects.html">Projects</a>
+              <a id="link3" href="./pages/contact-form.html">Contact</a>
+              <a id="link4" href="/index.html">Home</a>
+            </div>
+          </div>
+        </nav>
+        </div>-->
+    
+        </div>
+       
+    </header>
+
+    <h1>Synth</h1>
+    
+    <div class="control-group">
+        <label for="waveform">Oscillator Waveform:</label>
+        <select id="waveform">
+            <option value="sine">Sine</option>
+            <option value="square">Square</option>
+            <option value="sawtooth" selected>Sawtooth</option>
+            <option value="triangle">Triangle</option>
+        </select>
+    </div>
+<section class="control">
+    <div class="control-group">
+        <label for="filterCutoff">Filter Cutoff (Hz): <span id="filterCutoffValue">1000</span></label>
+        <input type="range" id="filterCutoff" min="20" max="5000" value="1000">
+    </div>
+
+    <div class="control-group">
+        <label for="resonance">Filter Resonance (Q): <span id="resonanceValue">1</span></label>
+        <input type="range" id="resonance" min="0.1" max="20" step="0.1" value="1">
+    </div>
+
+    <div class="control-group">
+        <label for="lfoWaveform">LFO Waveform:</label>
+        <select id="lfoWaveform">
+            <option value="sine" selected>Sine</option>
+            <option value="square">Square</option>
+            <option value="sawtooth">Sawtooth</option>
+            <option value="triangle">Triangle</option>
+        </select>
+    </div>
+
+    <div class="control-group">
+        <label for="lfoFrequency">LFO Frequency (Hz): <span id="lfoFrequencyValue">5</span></label>
+        <input type="range" id="lfoFrequency" min="0.1" max="20" step="0.1" value="5">
+    </div>
+
+    <div class="control-group">
+        <label for="lfoAmount">LFO Amount: <span id="lfoAmountValue">500</span></label>
+        <input type="range" id="lfoAmount" min="0" max="2000" step="1" value="500">
+    </div>
+
+    <div class="control-group">
+        <label for="attack">Attack (s): <span id="attackValue">0.1</span></label>
+        <input type="range" id="attack" min="0" max="2" step="0.01" value="0.1">
+    </div>
+    
+    <div class="control-group">
+        <label for="decay">Decay (s): <span id="decayValue">0.2</span></label>
+        <input type="range" id="decay" min="0" max="2" step="0.01" value="0.2">
+    </div>
+    
+    <div class="control-group">
+        <label for="sustain">Sustain Level: <span id="sustainValue">0.7</span></label>
+        <input type="range" id="sustain" min="0" max="1" step="0.01" value="0.7">
+    </div>
+    
+    <div class="control-group">
+        <label for="release">Release (s): <span id="releaseValue">0.5</span></label>
+        <input type="range" id="release" min="0" max="2" step="0.01" value="0.5">
+    </div>
+
+    <div class="control-group">
+        <label for="saturation">Saturation Amount: <span id="saturationValue">0</span></label>
+        <input type="range" id="saturation" min="0" max="1" step="0.01" value="0">
+    </div>
+</section>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div id="keyboard">
+        <!-- Keyboard keys will be added here by JavaScript -->
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        let oscillators = {};
+        let filters = {};
+        let gainNodes = {};
+        let lfos = {};
+        let lfoGains = {};
+
+        const waveformSelect = document.getElementById('waveform');
+
+        const filterCutoffSlider = document.getElementById('filterCutoff');
+        const filterCutoffValue = document.getElementById('filterCutoffValue');
+
+        const resonanceSlider = document.getElementById('resonance');
+        const resonanceValue = document.getElementById('resonanceValue');
+
+        const lfoWaveformSelect = document.getElementById('lfoWaveform');
+        const lfoFrequencySlider = document.getElementById('lfoFrequency');
+        const lfoFrequencyValue = document.getElementById('lfoFrequencyValue');
+
+        const lfoAmountSlider = document.getElementById('lfoAmount');
+        const lfoAmountValue = document.getElementById('lfoAmountValue');
+
+        const attackSlider = document.getElementById('attack');
+        const attackValue = document.getElementById('attackValue');
+
+        const decaySlider = document.getElementById('decay');
+        const decayValue = document.getElementById('decayValue');
+
+        const sustainSlider = document.getElementById('sustain');
+        const sustainValue = document.getElementById('sustainValue');
+
+        const releaseSlider = document.getElementById('release');
+        const releaseValue = document.getElementById('releaseValue');
+
+        const saturationSlider = document.getElementById('saturation');
+        const saturationValue = document.getElementById('saturationValue');
+
+        function updateValueDisplay(slider, display) {
+            slider.addEventListener('input', function() {
+                display.textContent = slider.value;
+            });
+        }
+
+        updateValueDisplay(filterCutoffSlider, filterCutoffValue);
+        updateValueDisplay(resonanceSlider, resonanceValue);
+        updateValueDisplay(lfoFrequencySlider, lfoFrequencyValue);
+        updateValueDisplay(lfoAmountSlider, lfoAmountValue);
+        updateValueDisplay(attackSlider, attackValue);
+        updateValueDisplay(decaySlider, decayValue);
+        updateValueDisplay(sustainSlider, sustainValue);
+        updateValueDisplay(releaseSlider, releaseValue);
+        updateValueDisplay(saturationSlider, saturationValue);
+
+        // Keyboard mapping
+        const keyNoteMap = {
+            'a': 60, // C4
+            'w': 61, // C#4
+            's': 62, // D4
+            'e': 63, // D#4
+            'd': 64, // E4
+            'f': 65, // F4
+            't': 66, // F#4
+            'g': 67, // G4
+            'y': 68, // G#4
+            'h': 69, // A4
+            'u': 70, // A#4
+            'j': 71, // B4
+            'k': 72  // C5
+        };
+
+        // Create visual keyboard
+        const keyboardDiv = document.getElementById('keyboard');
+        for (let key in keyNoteMap) {
+            let noteNumber = keyNoteMap[key];
+            let isBlack = [1, 3, 6, 8, 10].includes(noteNumber % 12);
+            let keyDiv = document.createElement('div');
+            keyDiv.classList.add('key');
+            keyDiv.classList.add(isBlack ? 'black' : 'white');
+            keyDiv.dataset.key = key;
+            keyDiv.textContent = key.toUpperCase();
+            keyboardDiv.appendChild(keyDiv);
+        }
+
+        // Create saturation node
+        function createSaturationCurve(amount) {
+            let k = amount * 100;
+            let curve = new Float32Array(44100);
+            let deg = Math.PI / 180;
+            for (let i = 0; i < 44100; ++i) {
+                let x = i * 2 / 44100 - 1;
+                curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+            }
+            return curve;
+        }
+
+        let waveshaper = audioCtx.createWaveShaper();
+        waveshaper.curve = createSaturationCurve(saturationSlider.value);
+        waveshaper.oversample = '4x';
+
+        saturationSlider.addEventListener('input', function() {
+            saturationValue.textContent = saturationSlider.value;
+            waveshaper.curve = createSaturationCurve(saturationSlider.value);
+        });
+
+        function noteOn(noteNumber, key) {
+            if (oscillators[key]) return; // Note is already playing
+
+            let oscillator = audioCtx.createOscillator();
+            let filter = audioCtx.createBiquadFilter();
+            let gainNode = audioCtx.createGain();
+
+            oscillator.type = waveformSelect.value;
+            let frequency = midiNoteToFrequency(noteNumber);
+            oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(filterCutoffSlider.value, audioCtx.currentTime);
+            filter.Q.setValueAtTime(resonanceSlider.value, audioCtx.currentTime);
+
+            // LFO setup
+            let lfo = audioCtx.createOscillator();
+            let lfoGain = audioCtx.createGain();
+
+            lfo.type = lfoWaveformSelect.value;
+            lfo.frequency.setValueAtTime(lfoFrequencySlider.value, audioCtx.currentTime);
+
+            // Connect LFO to filter cutoff
+            lfoGain.gain.setValueAtTime(lfoAmountSlider.value, audioCtx.currentTime); // Modulation depth
+            lfo.connect(lfoGain);
+            lfoGain.connect(filter.frequency);
+
+            lfo.start();
+
+            // Envelope parameters
+            const attackTime = parseFloat(attackSlider.value);
+            const decayTime = parseFloat(decaySlider.value);
+            const sustainLevel = parseFloat(sustainSlider.value);
+
+            const now = audioCtx.currentTime;
+
+            gainNode.gain.cancelScheduledValues(now);
+            gainNode.gain.setValueAtTime(0, now);
+
+            // Attack
+            gainNode.gain.linearRampToValueAtTime(1, now + attackTime);
+            // Decay
+            gainNode.gain.linearRampToValueAtTime(sustainLevel, now + attackTime + decayTime);
+
+            oscillator.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(waveshaper);
+            waveshaper.connect(audioCtx.destination);
+
+            oscillator.start(now);
+
+            oscillators[key] = oscillator;
+            filters[key] = filter;
+            gainNodes[key] = gainNode;
+            lfos[key] = lfo;
+            lfoGains[key] = lfoGain;
+
+            // Visual feedback
+            let keyDiv = document.querySelector(`div[data-key="${key}"]`);
+            if (keyDiv) keyDiv.classList.add('pressed');
+        }
+
+        function noteOff(key) {
+            if (!oscillators[key]) return; // Note is not playing
+
+            const releaseTime = parseFloat(releaseSlider.value);
+            const now = audioCtx.currentTime;
+
+            let gainNode = gainNodes[key];
+            gainNode.gain.cancelScheduledValues(now);
+            gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+            gainNode.gain.linearRampToValueAtTime(0, now + releaseTime);
+
+            let oscillator = oscillators[key];
+            oscillator.stop(now + releaseTime + 0.1);
+
+            let lfo = lfos[key];
+            lfo.stop(now + releaseTime + 0.1);
+
+            // Clean up
+            delete oscillators[key];
+            delete filters[key];
+            delete gainNodes[key];
+            delete lfos[key];
+            delete lfoGains[key];
+
+            // Visual feedback
+            let keyDiv = document.querySelector(`div[data-key="${key}"]`);
+            if (keyDiv) keyDiv.classList.remove('pressed');
+        }
+
+        function midiNoteToFrequency(note) {
+            return 440 * Math.pow(2, (note - 69) / 12);
+        }
+
+        // Event listeners for keyboard input
+        let keysPressed = {};
+
+        document.addEventListener('keydown', function(event) {
+            let key = event.key.toLowerCase();
+            if (keyNoteMap[key] !== undefined && !keysPressed[key]) {
+                noteOn(keyNoteMap[key], key);
+                keysPressed[key] = true;
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            let key = event.key.toLowerCase();
+            if (keyNoteMap[key] !== undefined) {
+                noteOff(key);
+                keysPressed[key] = false;
+            }
+        });
+
+        // Event listeners for mouse clicks on the visual keyboard
+        keyboardDiv.addEventListener('mousedown', function(event) {
+            if (event.target.classList.contains('key')) {
+                let key = event.target.dataset.key;
+                noteOn(keyNoteMap[key], key);
+                keysPressed[key] = true;
+            }
+        });
+
+        keyboardDiv.addEventListener('mouseup', function(event) {
+            if (event.target.classList.contains('key')) {
+                let key = event.target.dataset.key;
+                noteOff(key);
+                keysPressed[key] = false;
+            }
+        });
+
+        // Update oscillator and filter when controls change
+        waveformSelect.addEventListener('change', function() {
+            for (let key in oscillators) {
+                oscillators[key].type = waveformSelect.value;
+            }
+        });
+
+        filterCutoffSlider.addEventListener('input', function() {
+            filterCutoffValue.textContent = filterCutoffSlider.value;
+            for (let key in filters) {
+                filters[key].frequency.setValueAtTime(filterCutoffSlider.value, audioCtx.currentTime);
+            }
+        });
+
+        resonanceSlider.addEventListener('input', function() {
+            resonanceValue.textContent = resonanceSlider.value;
+            for (let key in filters) {
+                filters[key].Q.setValueAtTime(resonanceSlider.value, audioCtx.currentTime);
+            }
+        });
+
+        lfoWaveformSelect.addEventListener('change', function() {
+            for (let key in lfos) {
+                lfos[key].type = lfoWaveformSelect.value;
+            }
+        });
+
+        lfoFrequencySlider.addEventListener('input', function() {
+            lfoFrequencyValue.textContent = lfoFrequencySlider.value;
+            for (let key in lfos) {
+                lfos[key].frequency.setValueAtTime(lfoFrequencySlider.value, audioCtx.currentTime);
+            }
+        });
+
+        lfoAmountSlider.addEventListener('input', function() {
+            lfoAmountValue.textContent = lfoAmountSlider.value;
+            for (let key in lfoGains) {
+                lfoGains[key].gain.setValueAtTime(lfoAmountSlider.value, audioCtx.currentTime);
+            }
+        });
+
+        // Update envelope in real-time
+        function updateEnvelope() {
+            const attackTime = parseFloat(attackSlider.value);
+            const decayTime = parseFloat(decaySlider.value);
+            const sustainLevel = parseFloat(sustainSlider.value);
+            const now = audioCtx.currentTime;
+
+            for (let key in gainNodes) {
+                let gainNode = gainNodes[key];
+                gainNode.gain.cancelScheduledValues(now);
+                gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+
+                gainNode.gain.linearRampToValueAtTime(1, now + attackTime);
+                gainNode.gain.linearRampToValueAtTime(sustainLevel, now + attackTime + decayTime);
+            }
+        }
+
+        attackSlider.addEventListener('input', updateEnvelope);
+        decaySlider.addEventListener('input', updateEnvelope);
+        sustainSlider.addEventListener('input', updateEnvelope);
+        // Release slider doesn't need real-time update during note
+
+    });
+    </script>
+</body>
+</html>
