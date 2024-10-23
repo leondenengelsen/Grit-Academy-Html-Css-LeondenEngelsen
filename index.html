@@ -9,53 +9,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d8f49de65f.js" crossorigin="anonymous"></script>
+    
 
   </head>
   
-  <body>
+  <body class="home-body">
 
-  <!--navbar have dropdown on all pages and get rid of home button-->
+  <!--Loopia or inleed domain hosting-->
+  <!--Can't get my hero picture and hero text to stay in center ////  Wrap img in DIV???-->
+  <!--favicon-->
   <!--flexbox div with 2 or 3 video's / Youtube links?-->
-  <!--small article on home page with photo and text in flexbox-->
-  <!--footer with insta, YouTube and Spotify and nordiqsound links-->
-  <!--h1 middle of page, nice font my name-->
-  <!--Aspect ratio video 9 / 16-->
-  <!--viewport height main -/- header -/- padding-->
+  <!--nav bar links-->
+  <!--dropdown links and on click?-->
+  <!--synth logo black-->
+  <!--Synth padding top?-->
+  <!--A tags font size bootstrap  pages same as index-->
+  <!--Positioning Contact-page-header-->
+  
 
   <header>
 
     <div class="logo">
-      <h1 id="logo">Leon den Engelsen</h1>
+      <a href="index.html"><h1 id="logo">Leon den Engelsen</h1></a>
     </div>
 
     <div class="nav-bar">
         <div class="web-menu">
             <nav>
             <a class="menu-item" href="./pages/projects.html">Projects</a>
-            <a class="menu-item" href="./pages/gearlist.html">Gear</a>
+            <a class="menu-item" href="./pages/gearlist.html">Gear for sale</a>
             <a class="menu-item" href="./pages/contact-form.html">Contact</a>
             <a class="menu-item" href="./pages/synth.html">Synth</a>
             
             </nav>
         </div>
 
-        <!--FONT AWESOME HAMBURGER ICON-->
-
         <div class="phone-menu">
             <button class="menu-button"><i class="fa-solid fa-bars"></i></button>
-            <nav>
-            <a class="phone-menu-item" href="">Home</a>
-            <a class="phone-menu-item" href="">Projects</a>
-            <a class="phone-menu-item" href="">Contact</a>
-            <a class="phone-menu-item" href="">Gear for sale</a>
+
+              <nav class="flex mobile-menu-wrapper">
+                <div>
+                  <a class="phone-menu-item" href="./index.html">Home</a>
+                  <a class="phone-menu-item" href="./pages/projects.html">Projects</a>
+                  <a class="phone-menu-item" href="./pages/gearlist.html">Gear for sale</a>
+                  <a class="phone-menu-item" href="./pages/contact-form.html">Contact</a>
+                  <a class="phone-menu-item" href="./pages/synth.html">Synth</a>
+                </div>
             </nav>
         </div>
 
-        <!--<div class="flex">   
+        <div class="flex">   
 
-    <nav> 
+    <!--<nav> 
       <div class="dropdown">
-        <button class="dropbtn">Menu</button>
+        <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
         <div class="dropdown-content">
           <a id="link1" href="./pages/synth.html">Synth</a>
           <a id="link2" href="./pages/gearlist.html">Gear</a>
@@ -65,7 +72,8 @@
         </div>
       </div>
     </nav>
-    </div>-->
+  -->
+    </div>
 
     </div>
    
@@ -96,10 +104,40 @@
 </article>
 </div>
 
-<div class="youtube-video">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/Xup-maFoAEs?si=Ypp_AvCSZEwurFd3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+<section class="latest">
+  <h4>Latest release:</h4>
+    <div class="youtube-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Xup-maFoAEs?si=Ypp_AvCSZEwurFd3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="koala">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/14imt39hQsC3Yx99KfLljJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+
+</section>
   
+
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+
+
+<footer>
+  <div class="rounded-social-buttons">
+    <a class="social-button spotify" href="https://open.spotify.com/artist/0SoSwLhB42eDxhzzy5CU3Y?si=anAShZAgSnaIFkfFC-X6LQ" target="_blank"><i class="fa-brands fa-spotify"></i></a>                
+    <a class="social-button youtube" href="https://www.youtube.com/@leondenengelsen" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a class="social-button instagram" href="https://www.instagram.com/leon_den_engelsen/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a class="social-button facebook" href="https://www.facebook.com/ldenengelsen" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a class="social-button linkedin" href="https://www.linkedin.com/in/leon-den-engelsen-9032a130a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    
+                    
+                    
+                </div>
+</footer>
+
+
+
 </main>
+
+<script src="script.js"</script></script>
   </body>
 </html>

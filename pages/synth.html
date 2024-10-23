@@ -3,6 +3,7 @@
 <head>
     <title>Synth</title>
     <style>
+        
         body { font-family: Arial, sans-serif; padding: 20px; }
         .control-group { margin-bottom: 20px; }
         label { display: inline-block; width: 180px; }
@@ -20,40 +21,51 @@
             justify-content: center;
             flex-direction: column;
         }
+        
                     
     </style>
     <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d8f49de65f.js" crossorigin="anonymous"></script>
 </head>
-<body style="margin-left: 100px; margin-right: 100px;">
+<body style="padding: 0;">
     
-    <header>
+    <header class="synth-header">
 
         <div class="logo">
-          <h1 id="logo">Leon den engelsen</h1>
-        </div>
+            <a href="../index.html"><h1 id="synth-page-logo">Leon den Engelsen</h1></a>
+          </div>
     
         <div class="nav-bar">
-            <div class="web-menu">
+            <div class="web-menu web-menu-synth">
                 <nav>
-                <a class="menu-item" href="./pages/projects.html">Projects</a>
-                <a class="menu-item" href="./pages/gearlist.html">Gear</a>
-                <a class="menu-item" href="contact-form.html">Contact</a>
-                <a class="menu-item" href="../index.html">Home</a>
+            
+                <a class="menu-item" href="./projects.html">Projects</a>
+                <a class="menu-item" href="./gearlist.html">Gear for sale</a>
+                <a class="menu-item" href="./contact-form.html">Contact</a>
+                <a class="menu-item" href="./synth.html">Synth</a>
                 
                 </nav>
             </div>
     
-            
+            <!--FONT AWESOME HAMBURGER ICON-->
+    
             <div class="phone-menu">
-                <button class="menu-button">menu</button>
-                <nav>
-                <a class="phone-menu-item" href="">Home</a>
-                <a class="phone-menu-item" href="">Projects</a>
-                <a class="phone-menu-item" href="">Contact</a>
-                <a class="phone-menu-item" href="">Gear for sale</a>
+                <button class="menu-button"><i class="fa-solid fa-bars"></i></button>
+    
+                  <nav class="flex mobile-menu-wrapper">
+                    <div>
+                      <a class="phone-menu-item" href="../index.html">Home</a>
+                      <a class="phone-menu-item" href="./projects.html">Projects</a>
+                      <a class="phone-menu-item" href="./gearlist.html">Gear for sale</a>
+                      <a class="phone-menu-item" href="./contact-form.html">Contact</a>
+                      <a class="phone-menu-item" href="./synth.html">Synth</a>
+                    </div>
                 </nav>
             </div>
+    
     
             <!--<div class="flex">   
     
@@ -75,7 +87,9 @@
        
     </header>
 
-    <h1>Synth</h1>
+
+<main style="margin-left: 100px; margin-right: 100px; text-align: center;">
+    <h3>Synth</h3>
     
     <div class="control-group">
         <label for="waveform">Oscillator Waveform:</label>
@@ -454,5 +468,21 @@
 
     });
     </script>
+
+<footer>
+    <div class="rounded-social-buttons">
+      <a class="social-button spotify" href="https://open.spotify.com/artist/0SoSwLhB42eDxhzzy5CU3Y?si=anAShZAgSnaIFkfFC-X6LQ" target="_blank"><i class="fa-brands fa-spotify"></i></a>                
+      <a class="social-button youtube" href="https://www.youtube.com/@leondenengelsen" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a class="social-button instagram" href="https://www.instagram.com/leon_den_engelsen/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a class="social-button facebook" href="https://www.facebook.com/ldenengelsen" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a class="social-button linkedin" href="https://www.linkedin.com/in/leon-den-engelsen-9032a130a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                      
+                      
+                      
+                  </div>
+  </footer>
+
+</main>
+<script src="../script.js"</script></script>
 </body>
 </html>
